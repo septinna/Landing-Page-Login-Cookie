@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/i-istime" rel="stylesheet">
+    <title>Formulir Pemesanan</title>
+    <style>
+        body{
+        background-color: rgb(221, 183, 114);
+        }
+        h1{
+            font-family: 'i Istime', sans-serif;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Formulir Pemesanan Online Cookie</h1>
+    <div id="app" class="form-container">   <!--Conditional Rindering-->
+        <form @submit.prevent="submitForm" v-if="!formSubmitted">               <!--Event Heandling-->
+            <p>Nama Pemesan: {{ message }}</p>
+            <input type="text" v-model="message" class="form-control"><br> 
+            <label for="No.hp">No. Hp:</label><br>
+            <input type="text" id="No.hp" v-model="noHp" name="no.hp" class="form-control">  
+            <p>Jenis Kelamin: {{ jk }}</p>
+            <div>
+                <input type="radio" value="Laki-Laki" v-model="jk">
+                <span>Laki-Laki</span>
+            </div>
+            <div>
+                <input type="radio" value="Perempuan" v-model="jk">
+                <span>Perempuan</span>
+            </div>
+            <p>Varian Rasa: {{ checked }}</p>    
+            <div>
+                <input type="checkbox" value="Chocochip" v-model="checked">
+                <span>Chocochip</span>
+            </div>
+            <div>
+                <input type="checkbox" value="Coklat" v-model="checked">
+                <span>Coklat</span>
+            </div>  
+            <div>
+                <input type="checkbox" value="Susu" v-model="checked">
+                <span>Susu</span>
+            </div>
+            <div>
+                <input type="checkbox" value="Caramel" v-model="checked">
+                <span>Caramel</span>
+            </div>
+            <div>
+                <input type="checkbox" value="Kopi" v-model="checked">
+                <span>Kopi</span>
+            </div>
+            <br>  
+            <label for="catatan">Catatan:</label><br>
+            <textarea id="catatan" v-model="catatan" name="catatan" rows="4" cols="50" class="form-control"></textarea>
+            <!--Class Pada Binding, Jika lupa tidak mengisi pengiriman dan langsung ke alamat tulisan akan merah-->
+            <p :class="{ 'text-danger': isPengirimanIncomplete && !klik, 'font-weight-bold': isPengirimanIncomplete && !klik }">Pengiriman: {{ klik }}</p>
+            <select v-model="klik" class="form-control">
+                <option disabled value="">Jasa Kirim</option>
+                <option>JNE</option>
+                <option>JNT</option>
+                <option>ShopeeExpress</option>
+                <option>Gosend</option>
+            </select> <br><br>
+            <label for="alamat">Alamat:</label><br>
+            <textarea id="alamat" v-model="alamat" name="alamat" rows="4" cols="50" class="form-control"></textarea> <br> 
+            <div id="form" class="d-flex justify-content-between">
+                <a href="/login" class="btn btn-success">Back</a>
+                <button :disabled="dataIncomplete" type="submit" class="btn btn-primary">Kirim</button>     <!--Atribut Binding-->
+            </div>                                             
+        </form>
+        <div id="yy" style="display: none;">
+            <p v-for="(value, key) in character" :key="key">{{ key }}: {{ value }}</p>   <!--Looping Data-->   
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: '',
+                    noHp: '',
+                    jk: '',
+                    pekerjaan: '',
+                    checked: [],
+                    klik: '',
+                    catatan: '',
+                    alamat: '',
+                    formSubmitted: false,
+                    character: {
+                        'Nama Pemesan': '',
+                        'No Hp': '',
+                        'Jenis Kelamin': '',
+                        'Varian Rasa': '',
+                        'Catatan': '',
+                        'Jasa Kirim': '',
+                        'Alamat': ''
+                    }
+                };
+            },
+            computed: {
+                dataIncomplete() {
+                    return !this.message || !this.noHp || !this.jk || this.checked.length === 0 || !this.catatan || this.isPengirimanIncomplete || !this.alamat;
+                },
+                isPengirimanIncomplete() {
+                    return this.alamat && !this.klik;
+                }
+            },
+            // Method
+            methods: {
+                submitForm() {
+                    this.formSubmitted = true;
+                    this.character['Nama Pemesan'] = this.message;
+                    this.character['No Hp'] = this.noHp;
+                    this.character['Jenis Kelamin'] = this.jk;
+                    this.character['Varian Rasa'] = this.checked.join(', ');
+                    this.character['Catatan'] = this.catatan;
+                    this.character['Jasa Kirim'] = this.klik;
+                    this.character['Alamat'] = this.alamat;
+                    document.getElementById('yy').style.display = 'block';
+                    window.alert('Apakah Anda yakin ingin mengirim formulir ini?');
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

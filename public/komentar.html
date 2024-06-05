@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/next-sunday" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(221, 183, 114);
+    }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center; /* Teks berada di tengah */
+    font-family: 'Next Sunday', sans-serif;
+  }
+
+  .review {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  .user-info {
+    flex-grow: 1;
+  }
+
+  .user-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .user-info p {
+    margin: 5px 0;
+    color: #777;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+  }
+
+  .rating img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .comment {
+    color: #333;
+    font-size: 16px;
+  }
+
+  .comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  .list-container {
+    list-style-type: none;
+    padding-left: 0;
+  }
+</style>
+</head>
+<body>
+<div class="container mt-7">
+    <h1 class="fw-bold">Ulasan Pembeli</h1>
+    <div class="review-card ">
+        <div class="card-body comment-box">
+            <h5 class="card-title">1. Apriyanto Haryadi</h5>
+            <div class="rating">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>                        
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+            </div>
+            <p class="card-text">Produk sangat bagus, sangat puas dengan pembelian ini!</p>
+        </div>
+    </div>
+    <div class="review-card ">
+        <div class="card-body comment-box">
+            <h5 class="card-title">2. Zuriyati</h5>
+            <div class="rating">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>                        
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/>
+                </svg>
+            </div>
+            <p class="card-text">Coklatnya kerasa banget, empuknya juga passs</p>
+        </div>
+    </div>
+    <!--Transision Grup-->
+    <div id="app">
+        <transition-group name="list" tag="div" class="list-container">
+          <li v-for="item in items" :key="item" class="list-item" v-html="item"></li>
+        </transition-group>
+        <button @click="addItem()" class="btn btn-secondary">Tambahkan Komentar</button>
+    </div>     
+</div>
+
+<script>
+    const app = Vue.createApp({
+      data() {
+          return {
+              items: [],
+              commentCount: 2,
+              cancelOnce: false
+          }
+      },
+      methods: {
+          addItem() {
+              this.commentCount++;
+              let name = prompt('Masukkan nama:');
+              if (name === null && !this.cancelOnce) {
+                  this.cancelOnce = true;
+                  return;
+              } else if (name === null && this.cancelOnce) {
+                  return;
+              }
+              let rating = parseInt(prompt('Masukkan rating bintang (1-5):'));
+              let comment = prompt('Masukkan komentar:');
+              if (rating < 1 || rating > 5 || isNaN(rating)) {
+                  alert('Rating bintang harus berada dalam rentang 1-5');
+                  this.commentCount--;
+                  return;
+              }
+              let stars = '';
+              for (let i = 0; i < rating; i++) {
+                  stars += '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M7.253.872a.714.714 0 0 1 1.492 0l1.207 3.796a.714.714 0 0 0 .684.484l3.842.28c.527.038.74.725.344 1.09l-3.045 2.23a.714.714 0 0 0-.252.765l1.128 3.758c.39 1.298-.747 1.853-1.416 1.144L8 12.347l-2.937 2.19c-.67.706-1.806.153-1.416-1.145l1.128-3.758a.714.714 0 0 0-.252-.765L.766 6.522c-.396-.365-.184-1.052.344-1.09l3.842-.28a.714.714 0 0 0 .684-.484l1.207-3.796z"/></svg>';
+              }
+              this.items.push(`<div class="review-card"><div class="card-body comment-box"><h5 class="card-title">${this.commentCount}. ${name}</h5><div class="rating">${stars}</div><p class="card-text">${comment}</p></div></div>`);
+          }
+      }
+      });
+    app.mount('#app');
+</script>    
+</body>
+</html>
